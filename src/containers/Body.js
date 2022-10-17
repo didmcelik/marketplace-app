@@ -11,7 +11,9 @@ import ItemPagination from "./pagination/ItemPagination";
 const useStyles = makeStyles({
   Body: {
     marginTop: "38.36px",
-    width: 1232,
+    width: "1420px",
+    marginRight: "10.4px",
+    marginLeft: "10.4px",
   },
   Button: {
     border: " none",
@@ -48,14 +50,7 @@ const Body = () => {
         <ItemPagination />
       </Grid>
 
-      <Grid
-        item
-        xs={3}
-        container
-        justifyContent={"start"}
-        alignItems="start"
-        fullwidth
-      >
+      <Grid item xs={3} container justifyContent={"center"} alignItems="start">
         <Basket></Basket>
       </Grid>
     </Grid>

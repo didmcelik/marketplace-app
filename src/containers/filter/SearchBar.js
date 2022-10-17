@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     width: 248,
     borderWidth: 2,
     borderColor: "#E0E0E0",
+    paddingLeft: "10px",
   },
 });
 
@@ -39,7 +40,7 @@ const SearchBar = ({ searchBy }) => {
         da.tags.map((tag) => items.push(tag));
       }
     }
-    dispatch(setProducts(data));
+    dispatch(setProducts(data.sort((a, b) => b.price - a.price)));
     // }
 
     return [...new Set(items)]; //JSON.stringify(data || {});

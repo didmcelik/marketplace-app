@@ -2,9 +2,16 @@ import { Box, Grid, IconButton } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { setBasket } from "../../redux/actions/basketActions";
+import { setBasket, setBasketTotal } from "../../redux/actions/basketActions";
 import AddIcon from "@mui/icons-material/Add";
+import { makeStyles, styled } from "@mui/styles";
+const useStyles = makeStyles({
+  Basket: {
+    border: "solid 5px #1EA4CE",
+  },
+});
 function Basket() {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basketProducts.products);
   const prodsAndCounts = basket.reduce(function(sums, entry) {
@@ -24,6 +31,7 @@ function Basket() {
       const { price } = items[0];
       total = total + prodsAndCounts[slug] * price;
     }
+    dispatch(setBasketTotal(parseFloat(total).toFixed(2)));
     return parseFloat(total).toFixed(2);
     // Object.keys(prodsAndCounts).map((slug)=>{
 
@@ -38,10 +46,10 @@ function Basket() {
 
     return (
       <Grid
-        fullwidth
+        //fullwidth
         item
         container
-        sx={{ height: 40.88, my: 3 }}
+        sx={{ height: 40.88, my: 2 }}
         justifyContent={"center"}
       >
         <Grid item xs={6} container direction="column">
@@ -97,22 +105,20 @@ function Basket() {
 
   return (
     <Grid
-      fullwidth
+      className={classes.Basket}
       sx={{
-        minHeight: 388,
-        // backgroundColor: "#FFFFFF",
-        //   marginBottom: 15, //TODO margin
+        minHeight: 238,
+        width: 296,
       }}
       container
       direction="column"
-      alignItems={"center"}
+      alignItems={"flex-start"}
       justifyContent="center"
     >
       <Grid
         item
         container
         sx={{
-          width: 296,
           minHeight: 238,
           backgroundColor: "#FFFFFF",
         }}
@@ -123,7 +129,6 @@ function Basket() {
       <Grid
         item
         sx={{
-          width: 296,
           height: 51.1,
           backgroundColor: "#FFFFFF",
           // borderColor: "#1EA4CE",

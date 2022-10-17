@@ -4,7 +4,7 @@ import {
   setSelectedBrands,
   isAllBrandsSelected,
 } from "../../redux/actions/brandActions";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Checkbox } from "@mui/material";
 
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
@@ -91,22 +91,23 @@ const SearchList = ({ searchBy }) => {
   const renderList = options.map((item) => {
     return (
       <Grid container direction="row" key={item}>
-        <input
-          type="checkbox"
-          style={{ backgroundColor: "#1EA4CE" }}
+        <Checkbox
+          style={{ color: "#1EA4CE", height: "22px", width: "22px" }}
           onClick={(e) => {
             handleChange(e, item);
           }}
           checked={selectedItems.indexOf(item) != -1}
           disabled={isAllSelected}
         />
-        <h1 style={{ fontSize: "14px" }}> {item}</h1>
+        <h1 style={{ fontSize: "14px" }}>
+          &nbsp; {item.length > 14 ? `${item.substring(0, 14)}..` : item}
+        </h1>
       </Grid>
     );
   });
 
   return (
-    <Box sx={{ width: 214, height: 142 }}>
+    <Box sx={{ width: 260, height: 142 }}>
       <SimpleBar
         autoHide={false}
         style={{
@@ -117,12 +118,11 @@ const SearchList = ({ searchBy }) => {
         }}
       >
         <Grid container direction="row">
-          <input
-            type="checkbox"
-            sx={{ color: "#1EA4CE" }}
+          <Checkbox
+            sx={{ color: "#1EA4CE", height: "22px", width: "22px" }}
             onClick={handleChangeAll}
           />
-          <h1 style={{ fontSize: "14px" }}> All</h1>
+          <h1 style={{ fontSize: "14px" }}> &nbsp; All</h1>
         </Grid>
 
         {options && renderList}
@@ -132,3 +132,23 @@ const SearchList = ({ searchBy }) => {
 };
 
 export default SearchList;
+
+{
+  /* <input
+            type="checkbox"
+            sx={{ color: "#1EA4CE", height: "22px", width: "22px" }}
+            onClick={handleChangeAll}
+          /> */
+}
+
+{
+  /* <input
+          type="checkbox"
+          style={{ backgroundColor: "#1EA4CE" }}
+          onClick={(e) => {
+            handleChange(e, item);
+          }}
+          checked={selectedItems.indexOf(item) != -1}
+          disabled={isAllSelected}
+        /> */
+}

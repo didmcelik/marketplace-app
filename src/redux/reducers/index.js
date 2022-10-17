@@ -23,7 +23,8 @@ import {
   currenPageIndexReducer,
   lastPageIndexReducer,
 } from "./paginationReducer";
-import { basketReducer } from "./basketReducer";
+import { basketReducer, basketTotalReducer } from "./basketReducer";
+import { sortTypeReducer } from "./sortTypeReducer";
 const reducers = combineReducers({
   allProducts: productsReducer,
   product: selectedProductsReducer,
@@ -40,6 +41,8 @@ const reducers = combineReducers({
   filteredProducts: filteredProductsReducer,
   lastPageIndex: lastPageIndexReducer,
   basketProducts: basketReducer,
+  basketTotal: basketTotalReducer,
+  sortType: sortTypeReducer,
 });
 
 export default reducers;

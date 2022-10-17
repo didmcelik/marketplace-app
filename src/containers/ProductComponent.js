@@ -47,8 +47,9 @@ const ProductComponent = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.filteredProducts.products); // filtered products
   const basket = useSelector((state) => state.basketProducts.products);
+  const sortType = useSelector((state) => state.sortType);
   const currenPageIndex = useSelector((state) => state.currenPageIndex);
-  useEffect(() => {}, [currenPageIndex, products]);
+  useEffect(() => {}, [currenPageIndex, products, sortType]);
 
   const renderList = products
     .slice((currenPageIndex - 1) * 16, currenPageIndex * 16)

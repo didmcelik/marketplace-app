@@ -12,8 +12,9 @@ const SearchContainer = ({ searchBy }) => {
         alignItems="center"
         justifyContent="center"
         sx={{
-          width: 296,
-          height: 274,
+          width: 256,
+          height: 220,
+          maring: "auto",
           borderColor: "#E0E0E0",
           borderRadius: 2,
         }}

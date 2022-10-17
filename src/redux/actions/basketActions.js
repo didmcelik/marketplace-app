@@ -5,3 +5,10 @@ export const setBasket = (products) => {
     payload: products,
   };
 };
+
+export const setBasketTotal = (total) => {
+  return {
+    type: ActionTypes.SET_BASKET_TOTAL,
+    payload: total,
+  };
+};
